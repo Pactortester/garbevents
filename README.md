@@ -2,7 +2,7 @@
 
 ## 依赖环境
 
-pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install -r requirements.txt
 
 ## 功能
 
