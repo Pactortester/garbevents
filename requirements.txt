@@ -1,0 +1,2 @@
+setuptools~=46.2.0
+mitmproxy~=5.0.1
