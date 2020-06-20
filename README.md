@@ -1,4 +1,4 @@
-# garb-events
+# garbevents
 
 ## 依赖环境
 
