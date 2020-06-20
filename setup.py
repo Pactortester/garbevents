@@ -3,9 +3,9 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="garb-events",
-    version="1.0.2",
-    keywords=["pip", "garb-events", "get_events"],
+    name="garbevents",
+    version="1.0.0",
+    keywords=["pip", "garbevents", "get_events"],
     description="grabbing buried points",
     long_description="A method of grabbing buried points, improve the mitmproxy",
     license="MIT Licence",

@@ -1,9 +1,0 @@
-README.md
-setup.py
-garb-events/__init__.py
-garb-events/events.py
-garb_events.egg-info/PKG-INFO
-garb_events.egg-info/SOURCES.txt
-garb_events.egg-info/dependency_links.txt
-garb_events.egg-info/requires.txt
-garb_events.egg-info/top_level.txt
