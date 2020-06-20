@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2019/11/4 8:49
 # @Author  : 李佳玮
-# @Email   : 1456470136@qq.com
-# @File    : events.py
+# @Email   : lijiawei@symbio.com
+# @File    : maidian_test.py
 # @Software: PyCharm
 
 
@@ -13,7 +13,13 @@ import urllib.error
 import mitmproxy
 from mitmproxy import http
 import base64
+import time
 import json
+from garbevents.settings import Settings as ST
+
+# 调用获取当前时间的方法
+
+Ctime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
 '''
 启动命令 
@@ -27,74 +33,71 @@ mitm.it
 运行命令
 mitmdump -p 8889 -s mobile_op.py
 mitmweb -p 8889 -s mobile_op.py
-
-addons = [
-    get_events()
-]
-
-
 '''
 
-# 生成一个埋点列表
-events_list = []
 
+class GetData():
+    # 生成一个埋点列表
+    events_list = []
 
-# 拿到请求数据
-def get_events(url, all_events, report_path):
-    """
+    # arr是被分割的list，n是每个chunk中含n元素。
+    def chunks(self, arr, n):
+        return [arr[i:i + n] for i in range(0, len(arr), n)]
 
-    :param url: 埋点地址
-    :param all_events: 事件list
-    :param report_path: 生成报告路径
-    :return:
-    """
-    flow = mitmproxy.http.HTTPFlow
-    request_data = flow.request
+    # 拿到请求数据
+    def request(self, flow: mitmproxy.http.HTTPFlow):
+        """
 
-    # print(request_data)
-    # 请求地址
-    request_url = request_data.url
+        :param flow:
+        :return:
+        """
 
-    # 通过网址过滤 只打印预期网址的返回
-    if url in request_url:
-        print("url:-------->", request_url)
-        api = request_url.split('/')[3].replace("'", '')
-        print("拆分后获取API地址====>", api)
-        if api == "APIPOOL":
-            request_content = str(flow.request.content).split("event=")[1].replace("'", '').replace(' ', '+')
-            print("拆分后获取加密数据====>", request_content)
-        else:
-            request_content = str(flow.request.url).split('&')[1].split('event=')[1]
-            print("拆分后获取加密数据====>", request_content)
+        request_data = flow.request
 
-        if request_content.find('%') == 0:
-            result = urllib.parse.unquote(request_content)
-        else:
-            url_content = urllib.parse.unquote(request_content)
-            a = base64.b64decode(url_content)
-            result = zlib.decompress(a).decode('utf-8')
-        result_list = json.loads(result)
+        # print(request_data)
+        # 请求地址
+        self.request_url = request_data.url
 
-        try:
-            event = result_list["data"][0]["pr"]["$eid"]
-            print("解密数据后获取事件名====>", event)
-            events_list.append(event)
-        except KeyError:
-            print("暂无事件!")
-        # 去重
-        event_list = list(set(events_list))
+        # 通过网址过滤 只打印预期网址的返回
+        if ST.url in self.request_url:
+            print("url:-------->", self.request_url)
+            api = self.request_url.split('/')[3].replace("'", '')
+            print("拆分后获取API地址====>", api)
+            if api == "APIPOOL":
+                request_content = str(flow.request.content).split("event=")[1].replace("'", '').replace(' ', '+')
+                print("拆分后获取加密数据====>", request_content)
+            else:
+                request_content = str(flow.request.url).split('&')[1].split('event=')[1]
+                print("拆分后获取加密数据====>", request_content)
 
-        file = open('{}/now_event.txt'.format(report_path), 'w')
-        for line in event_list:
-            file.write(line + '\n')
+            if request_content.find('%') == 0:
+                result = urllib.parse.unquote(request_content)
+            else:
+                url_content = urllib.parse.unquote(request_content)
+                a = base64.b64decode(url_content)
+                result = zlib.decompress(a).decode('utf-8')
+            result_list = json.loads(result)
 
-        print("事件名集合====>", event_list)
-        # 所有的埋点事件
+            try:
+                event = result_list["data"][0]["pr"]["$eid"]
+                print("解密数据后获取事件名====>", event)
+                self.events_list.append(event)
+            except KeyError:
+                print("暂无事件!")
+            # 去重
+            event_list = list(set(self.events_list))
 
-        lost_list = list(set(all_events).difference(set(event_list)))
-        print("丢失事件名====>", lost_list)
+            file = open('{}/now_event.txt'.format(ST.report_path), 'w')
+            for line in event_list:
+                file.write(line + '\n')
 
-        file = open('{}/lost_event.txt'.format(report_path), 'w')
-        for line in lost_list:
-            file.write(line + '\n')
-            # file.close()
+            print("事件名集合====>", event_list)
+            # 所有的埋点事件
+
+            lost_list = list(set(ST.all_events).difference(set(event_list)))
+            print("丢失事件名====>", lost_list)
+
+            file = open('{}/lost_event.txt'.format(ST.report_path), 'w')
+            for line in lost_list:
+                file.write(line + '\n')
+                # file.close()

@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="garbevents",
-    version="1.0.0",
+    version="1.0.1",
     keywords=["pip", "garbevents", "get_events"],
     description="grabbing buried points",
     long_description="A method of grabbing buried points, improve the mitmproxy",

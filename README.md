@@ -23,12 +23,28 @@ mitmdump -p 8889
 mitm.it
 ```
 
-- 运行命令
-mitmdump -p 8889 -s op.py
-
 ## 命令
 
 ```shell
 mitmdump -p 8889 -s op.py
 ```
+
+## Demo
+
+```python
+from garbevents.events import GetData
+from garbevents.settings import Settings as ST
+
+# 埋点上传url 
+ST.url = 'https://www.baidu.com/'
+# 报告生成路径 
+ST.report_path = 'report'
+# 所有事件名称 
+ST.all_events = ['event_name_1', 'event_name_2']
+
+addons = [
+    GetData()
+]
+```
+
 
