@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
-# @Time    : 2020/6/19 10:19
-# @Author  : 李佳玮
-# @Email   : lijiawei@symbio.com
-# @File    : __init__.py.py
-# @Software: PyCharm
+
+"""
+This is a python toolkit for real-time capture,
+analysis, cleaning and report generation of embedded points based on the development of mitmproxy.
+
+"""
