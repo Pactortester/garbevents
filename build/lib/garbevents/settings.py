@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2020/6/20 18:57
-# @Author  : 李佳玮
-# @Email   : lijiawei@symbio.com
-# @File    : settings.py
-# @Software: PyCharm
+
+"""
+Parameter initialization is a global variable by default. When calling the relevant API,
+you need to inherit the setting class and set the corresponding parameters.
+
+"""
 
 
 class Settings(object):
     report_path = None
     url = None
     all_events = []
+    interface_url = None
