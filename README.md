@@ -26,7 +26,7 @@ mitm.it
 ## 命令
 
 ```shell
-mitmdump -p 8889 -s op.py
+mitmdump -p 8889 -s <you_test_script.py>
 ```
 
 ## Demo
