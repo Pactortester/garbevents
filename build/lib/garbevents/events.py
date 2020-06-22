@@ -41,7 +41,7 @@ class GetData:
             print("url:-------->", self.request_url)
             api = self.request_url.split('/')[3].replace("'", '')
             print("拆分后获取API地址====>", api)
-            if api == ST.interface_url:
+            if api in ST.interface_url:
                 request_content = str(flow.request.content).split("event=")[1].replace("'", '').replace(' ', '+')
                 print("拆分后获取加密数据====>", request_content)
             else:

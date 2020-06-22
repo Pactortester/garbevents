@@ -1,11 +1,11 @@
 Metadata-Version: 1.0
 Name: garbevents
-Version: 1.0.2
+Version: 1.0.3
 Summary: grabbing buried points
 Home-page: https://github.com/Pactortester/garb-events
 Author: lijiawei
 Author-email: 1456470136@qq.com
 License: MIT Licence
-Description: A method of grabbing buried points, improve the mitmproxy
-Keywords: pip,garbevents,get_events
+Description: A method of grabbing buried points, improve the mitmproxy.This is a python toolkit for real-time capture,analysis, cleaning and report generation of embedded points based on the development of mitmproxy.
+Keywords: pip,garbevents,get_events,buried points
 Platform: any
