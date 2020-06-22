@@ -42,7 +42,7 @@ ST.report_path = 'report'
 # 所有事件名称 
 ST.all_events = ['event_name_1', 'event_name_2']
 # 接口地址
-ST.interface_url = 'APIPOOL' or 'apipool'
+ST.interface_url = ['apipool', 'APIPOOL']
 
 addons = [
     GetData()
