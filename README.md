@@ -1,8 +1,8 @@
 # garbevents
 
-## 依赖环境
+## 安装
 
-pip install -r requirements.txt
+pip install garbevents
 
 ## 功能
 
