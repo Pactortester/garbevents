@@ -1,3 +1,4 @@
+from garbevents.version import __version__
 
 """
 This is a python toolkit for real-time capture,

@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2019/11/4 8:49
-# @Author  : 李佳玮
-# @Email   : 1456470136@qq.com
-# @File    : events.py
-# @Software: PyCharm
-
 
 import urllib
 import zlib
