@@ -2,7 +2,7 @@
 
 ## logo
 
-![](.\garbevents.png)
+![Image text](https://github.com/Pactortester/garb-events/blob/master/images/garbevents.png)
 
 
 ## 安装
