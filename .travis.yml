@@ -1,7 +1,6 @@
 language: python
 python:   # 指定运行环境，这里会分别在 2.7 和 3.5 运行
   - '3.7'
-  - '3.5'
 install:
   - pip install -r requirements.txt   # 安装依赖
 script: python tests/test_events.py  # 如果有单元测试这里应该执行单元测试
