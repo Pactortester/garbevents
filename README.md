@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Pactortester/garb-events.svg?branch=master)](https://travis-ci.com/Pactortester/garb-events)
+
 # garbevents
 
 ## logo
