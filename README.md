@@ -1,17 +1,34 @@
 # garbevents
 
+## logo
+
+![](.\garbevents.png)
+
+
 ## 安装
 
 pip install garbevents
 
+
+
+##  仓库地址：
+
+- github：https://github.com/Pactortester/garb-events.git
+- pypi：https://pypi.org/project/garbevents/#history
+
+## 社区地址
+
+- testerhome：https://testerhome.com/opensource_projects/garbevents
+
 ## 适用场景
 
-1. 诸葛io是数据智能收集，其核心在于对用户行为的深入分析与洞察，支持前端代码埋点、全埋点、可视化圈选埋点及服务端采集等多种技术方案，利用实时数据进行高效自动化运营。
-2. 自动抓取解析埋点信息数据校验埋点是否丢失。
+1. 使用 诸葛IO 作为埋点收集工具的 。
+2. 需要回归验证大批量埋点是否丢失的。
+3. 使用本工具 自动抓取解析埋点信息数据校验埋点是否 丢失。
 
 ## 功能
 
-1. 自动解析移动端触发的埋点信息，解密后生成[now_data.txt]
+1. 自动解析 移动端\桌面端\h5页面 触发的埋点信息，解密后生成[now_data.txt]
 2. 去重后和已知埋点信息diff,保存文件[data.txt]
 
 
@@ -21,6 +38,7 @@ pip install garbevents
 ```shell
 mitmdump -p 8889
 ```
+
 - 连接代理
 
 - 下载证书
@@ -53,5 +71,3 @@ addons = [
     GetData()
 ]
 ```
-
-
