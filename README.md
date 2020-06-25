@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/Pactortester/garb-events.svg?branch=master)](https://travis-ci.com/Pactortester/garb-events)
+[![Build Status](https://travis-ci.com/Pactortester/garb-events.svg?branch=master)](https://travis-ci.com/Pactortester/garb-events)![PyPI](https://img.shields.io/pypi/v/garbevents)![PyPI - Wheel](https://img.shields.io/pypi/wheel/garbevents)![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mitmproxy)![GitHub top language](https://img.shields.io/github/languages/top/Pactortester/garb-events)![GitHub stars](https://img.shields.io/github/stars/Pactortester/garb-events?style=social)![https://blog.csdn.net/flower_drop](https://img.shields.io/badge/csdn-%40flower__drop-orange)
 
 # garbevents
 
