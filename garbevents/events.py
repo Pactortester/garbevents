@@ -11,7 +11,6 @@ import json
 from garbevents.settings import Settings as ST
 
 
-
 class GetData:
     """
     A mitmproxy HTTP request class.
