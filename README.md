@@ -41,7 +41,7 @@ pip install garbevents
 
 
 1. 自动解析 移动端\桌面端\h5页面 触发的埋点信息，解密后生成[now_data.txt]
-2. 去重后和已知埋点信息diff,保存文件[data.txt]
+2. 去重后和已知埋点信息diff,保存文件[lost_data.txt]
 
 
 ## 使用
