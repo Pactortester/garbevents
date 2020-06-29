@@ -18,7 +18,7 @@ class Settings(object):
     # 接口地址
     ST.interface_url = ['apipool', 'APIPOOL']
     """
-    report_path = None
+    report_path = 'report'  # 默认在当前路径生成report文件夹
     url = None
     all_events = []
     interface_url = []
