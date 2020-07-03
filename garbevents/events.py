@@ -54,7 +54,8 @@ class GetData:
             except KeyError:
                 print("暂无事件!")
             event_list = list(set(self.events_list))
-            os.mkdir(ST.report_path)
+            if not os.path.exists(ST.report_path):
+                os.mkdir(ST.report_path)
             file = open('{}/now_event.txt'.format(ST.report_path), 'w')
             for line in event_list:
                 file.write(line + '\n')
