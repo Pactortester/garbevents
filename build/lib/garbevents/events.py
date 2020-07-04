@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import os
+
 import urllib
 import zlib
 import urllib.parse
@@ -9,6 +9,7 @@ from mitmproxy import http
 import base64
 import json
 from garbevents.settings import Settings as ST
+
 
 
 class GetData:
@@ -54,8 +55,7 @@ class GetData:
             except KeyError:
                 print("暂无事件!")
             event_list = list(set(self.events_list))
-            if not os.path.exists(ST.report_path):
-                os.mkdir(ST.report_path)
+
             file = open('{}/now_event.txt'.format(ST.report_path), 'w')
             for line in event_list:
                 file.write(line + '\n')
