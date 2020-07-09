@@ -7,7 +7,7 @@
 ## Logo
 
 
-![logo](https://github.com/Pactortester/garb-events/blob/master/images/garbevents.png)
+![logo](https://github.com/Pactortester/garbevents/blob/master/images/garbevents.png)
 
 
 ## 安装

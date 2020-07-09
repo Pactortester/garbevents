@@ -7,14 +7,14 @@ with open('README.md', encoding='utf-8') as f:
 
 setup(
     name="garbevents",
-    version="1.0.8",
+    version="1.0.9",
     keywords=["pip", "garbevents", "get_events", "buried points"],
     description="grabbing buried points",
     long_description=long_description,
     long_description_content_type='text/markdown',
     license="MIT Licence",
 
-    url="https://github.com/Pactortester/garb-events",
+    url="https://github.com/Pactortester/garbevents",
     author="lijiawei",
     author_email="1456470136@qq.com",
     classifiers=[
