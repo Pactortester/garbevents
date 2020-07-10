@@ -88,3 +88,7 @@ addons = [
     GetData()
 ]
 ```
+
+以上便是 garbevents 的基本用法介绍。
+
+如果您有发现错误，或者您对 garbevents 有任何建议，欢迎到 [garbevents Issues](https://github.com/Pactortester/garbevents/issues) 发表，非常感谢您的支持。您的反馈和建议非常宝贵，希望您的参与能帮助 garbevents 做得更好。
