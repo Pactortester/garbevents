@@ -76,7 +76,7 @@ from garbevents.events import GetData
 from garbevents.settings import Settings as ST
 
 # 埋点上传url 
-ST.url = 'https://www.baidu.com/'
+ST.url = 'https://datain.zhuge.com'
 # 报告生成路径 
 ST.report_path = 'report'
 # 所有事件名称 
