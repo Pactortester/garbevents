@@ -40,25 +40,38 @@ pip install garbevents
 ## 功能
 
 
-1. 自动解析 移动端\桌面端\h5页面 触发的埋点信息，解密后生成[now_data.txt]
-2. 去重后和已知埋点信息diff,保存文件[lost_data.txt]
+1. 自动解析 移动端\桌面端\h5页面 触发的埋点信息，解密后生成 [now_data.txt]()
+2. 去重后和已知埋点信息diff,保存文件 [lost_data.txt]()
 
 
 ## 使用
 
 
 - 启动服务
+1. 在cmd启动代理服务
 ```shell
-mitmdump -p 8889
+mitmdump -p 8889 -s <you_test_script.py>
 ```
 
 - 连接代理
+1. cmd中运行ipconfig 找到自己的ip地址
+2. 手机wifi高级选项，代理选择手动，添加代理服务器
+
+```shell
+ip:你的电脑ip, 端口:8889
+```
 
 - 下载证书
+1. 在手机浏览器中打开网址 [mitm.it]()
+2. 选择对应的证书下载安装
 ```shell
 mitm.it
 ```
 
+- 开始使用
+1. 此时便可以在手机端操作触发埋点，控制台实时打印当前触发的埋点
+2. 如果想查看丢失的埋点需要先在 ST.all_events 全局变量中传入全部埋点信息
+3. 例如：ST.all_events = ['event_name_1', 'event_name_2']
 
 ## 命令
 
