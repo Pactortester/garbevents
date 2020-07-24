@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: garbevents
-Version: 1.0.9
+Version: 1.1.0
 Summary: grabbing buried points
 Home-page: https://github.com/Pactortester/garbevents
 Author: lijiawei
@@ -9,7 +9,7 @@ License: MIT Licence
 Description: # garbevents
         
         
-        [![Build Status](https://travis-ci.com/Pactortester/garbevents.svg?branch=master)](https://travis-ci.com/Pactortester/garbevents) ![PyPI](https://img.shields.io/pypi/v/garbevents) ![PyPI - Wheel](https://img.shields.io/pypi/wheel/garbevents) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/garbevents) ![GitHub top language](https://img.shields.io/github/languages/top/Pactortester/garbevents) ![GitHub stars](https://img.shields.io/github/stars/Pactortester/garbevents?style=social) ![https://blog.csdn.net/flower_drop](https://img.shields.io/badge/csdn-%40flower__drop-orange)
+        [![Build Status](https://travis-ci.com/Pactortester/garbevents.svg?branch=master)](https://travis-ci.com/Pactortester/garbevents) ![PyPI](https://img.shields.io/pypi/v/garbevents) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/garbevents) ![GitHub top language](https://img.shields.io/github/languages/top/Pactortester/garbevents) ![PyPI - Downloads](https://img.shields.io/pypi/dm/garbevents) ![GitHub stars](https://img.shields.io/github/stars/Pactortester/garbevents?style=social) ![https://blog.csdn.net/flower_drop](https://img.shields.io/badge/csdn-%40flower__drop-orange)
         
         
         ## Logo
@@ -48,25 +48,38 @@ Description: # garbevents
         ## 功能
         
         
-        1. 自动解析 移动端\桌面端\h5页面 触发的埋点信息，解密后生成[now_data.txt]
-        2. 去重后和已知埋点信息diff,保存文件[lost_data.txt]
+        1. 自动解析 移动端\桌面端\h5页面 触发的埋点信息，解密后生成 [now_data.txt]()
+        2. 去重后和已知埋点信息diff,保存文件 [lost_data.txt]()
         
         
         ## 使用
         
         
         - 启动服务
+        1. 在cmd启动代理服务
         ```shell
-        mitmdump -p 8889
+        mitmdump -p 8889 -s <you_test_script.py>
         ```
         
         - 连接代理
+        1. cmd中运行ipconfig 找到自己的ip地址
+        2. 手机wifi高级选项，代理选择手动，添加代理服务器
+        
+        ```shell
+        ip:你的电脑ip, 端口:8889
+        ```
         
         - 下载证书
+        1. 在手机浏览器中打开网址 [mitm.it]()
+        2. 选择对应的证书下载安装
         ```shell
         mitm.it
         ```
         
+        - 开始使用
+        1. 此时便可以在手机端操作触发埋点，控制台实时打印当前触发的埋点
+        2. 如果想查看丢失的埋点需要先在 ST.all_events 全局变量中传入全部埋点信息
+        3. 例如：ST.all_events = ['event_name_1', 'event_name_2']
         
         ## 命令
         
@@ -84,7 +97,7 @@ Description: # garbevents
         from garbevents.settings import Settings as ST
         
         # 埋点上传url 
-        ST.url = 'https://www.baidu.com/'
+        ST.url = 'https://datain.zhuge.com'
         # 报告生成路径 
         ST.report_path = 'report'
         # 所有事件名称 
@@ -96,6 +109,13 @@ Description: # garbevents
             GetData()
         ]
         ```
+        ## 运行截图
+        ![](images/demo.png)
+        ## 
+        
+        以上便是 garbevents 的基本用法介绍。
+        
+        如果您有发现错误，或者您对 garbevents 有任何建议，欢迎到 [garbevents Issues](https://github.com/Pactortester/garbevents/issues) 发表，非常感谢您的支持。您的反馈和建议非常宝贵，希望您的参与能帮助 garbevents 做得更好。
         
 Keywords: pip,garbevents,get_events,buried points
 Platform: any

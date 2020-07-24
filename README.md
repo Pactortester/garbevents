@@ -101,6 +101,8 @@ addons = [
     GetData()
 ]
 ```
+## 运行截图
+![](images/demo.png)
 ## 
 
 以上便是 garbevents 的基本用法介绍。
