@@ -89,7 +89,7 @@ mitmdump -p 8889 -s <you_test_script.py>
 ```
 
 
-## Demo
+## 诸葛IO Demo
 
 
 ```python
@@ -109,6 +109,26 @@ addons = [
     GetData()
 ]
 ```
+
+## 神策数据 Demo
+
+
+```python
+from garbevents.sensors_events import GetData
+from garbevents.settings import Settings as ST
+
+# 埋点上传url 
+ST.url = 'http://sensor.wodidashi.com'
+# 报告生成路径 
+ST.report_path = 'report'
+# 所有事件名称 
+ST.all_events = ['event_name_1', 'event_name_2']
+
+addons = [
+    GetData()
+]
+```
+
 ## 运行截图
 ![](images/demo.png)
 ## 

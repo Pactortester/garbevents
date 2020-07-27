@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: garbevents
-Version: 1.1.0
+Version: 1.1.1
 Summary: grabbing buried points
 Home-page: https://github.com/Pactortester/garbevents
 Author: lijiawei
@@ -10,6 +10,14 @@ Description: # garbevents
         
         
         [![Build Status](https://travis-ci.com/Pactortester/garbevents.svg?branch=master)](https://travis-ci.com/Pactortester/garbevents) ![PyPI](https://img.shields.io/pypi/v/garbevents) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/garbevents) ![GitHub top language](https://img.shields.io/github/languages/top/Pactortester/garbevents) ![PyPI - Downloads](https://img.shields.io/pypi/dm/garbevents) ![GitHub stars](https://img.shields.io/github/stars/Pactortester/garbevents?style=social) ![https://blog.csdn.net/flower_drop](https://img.shields.io/badge/csdn-%40flower__drop-orange)
+        
+        
+        ## 适配计划
+        
+        - [x] 诸葛 IO 
+        - [x] 神策数据
+        - [ ] GrowingIO 埋点数据
+        - [ ] ....
         
         
         ## Logo
@@ -89,7 +97,7 @@ Description: # garbevents
         ```
         
         
-        ## Demo
+        ## 诸葛IO Demo
         
         
         ```python
@@ -109,6 +117,26 @@ Description: # garbevents
             GetData()
         ]
         ```
+        
+        ## 神策数据 Demo
+        
+        
+        ```python
+        from garbevents.sensors_events import GetData
+        from garbevents.settings import Settings as ST
+        
+        # 埋点上传url 
+        ST.url = 'http://sensor.wodidashi.com'
+        # 报告生成路径 
+        ST.report_path = 'report'
+        # 所有事件名称 
+        ST.all_events = ['event_name_1', 'event_name_2']
+        
+        addons = [
+            GetData()
+        ]
+        ```
+        
         ## 运行截图
         ![](images/demo.png)
         ## 
