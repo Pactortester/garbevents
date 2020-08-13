@@ -71,6 +71,7 @@ class GetData:
             data_list = json.loads(self.gzip_decompress(base64.b64decode(gzip_data)).decode('utf8'))
 
             for result_list in data_list:
+                ctx.log.error("解密数据后获取json串====>{}".format(result_list))
 
                 try:
                     event = result_list["event"]
