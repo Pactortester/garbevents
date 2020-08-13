@@ -49,6 +49,7 @@ class GetData:
                 ace = base64.b64decode(url_content)
                 result = zlib.decompress(ace).decode('utf-8')
             result_list = json.loads(result)
+            ctx.log.error("解密数据后获取json串====>{}".format(result_list))
             try:
                 event = result_list["data"][0]["pr"]["$eid"]
                 ctx.log.error("解密数据后获取事件名====>{}".format(event))
