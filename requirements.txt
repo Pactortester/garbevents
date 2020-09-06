@@ -1,2 +1,3 @@
 mitmproxy==5.2
-garbevents==1.1.3
+garbevents==1.1.2
+pprint==0.1
