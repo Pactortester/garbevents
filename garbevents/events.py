@@ -4,6 +4,8 @@ import urllib
 import zlib
 import urllib.parse
 import urllib.error
+from pprint import pprint
+
 import mitmproxy
 from mitmproxy import http
 from mitmproxy import ctx
@@ -33,15 +35,15 @@ class GetData:
         self.request_url = request_data.url
         if ST.url in self.request_url:
 
-            ctx.log.info("url:-------->{}".format(self.request_url))
+            # ctx.log.info("url:-------->{}".format(self.request_url))
             api = self.request_url.split('/')[3].replace("'", '')
-            ctx.log.error("拆分后获取API地址====>{}".format(api))
+            # ctx.log.error("拆分后获取API地址====>{}".format(api))
             if api in ST.interface_url:
                 request_content = str(flow.request.content).split("event=")[1].replace("'", '').replace(' ', '+')
-                ctx.log.info("拆分后获取加密数据====>{}".format(request_content))
+                # ctx.log.info("拆分后获取加密数据====>{}".format(request_content))
             else:
                 request_content = str(flow.request.url).split('&')[1].split('event=')[1]
-                ctx.log.info("拆分后获取加密数据====>{}".format(request_content))
+                # ctx.log.info("拆分后获取加密数据====>{}".format(request_content))
             if request_content.find('%') == 0:
                 result = urllib.parse.unquote(request_content)
             else:
@@ -49,7 +51,8 @@ class GetData:
                 ace = base64.b64decode(url_content)
                 result = zlib.decompress(ace).decode('utf-8')
             result_list = json.loads(result)
-            ctx.log.error("解密数据后获取json串====>{}".format(result_list))
+            # ctx.log.error("解密数据后获取json串:")
+            pprint(result_list)
             try:
                 event = result_list["data"][0]["pr"]["$eid"]
                 ctx.log.error("解密数据后获取事件名====>{}".format(event))

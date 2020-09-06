@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: garbevents
-Version: 1.1.1
+Version: 1.1.3
 Summary: grabbing buried points
 Home-page: https://github.com/Pactortester/garbevents
 Author: lijiawei
@@ -48,7 +48,7 @@ Description: # garbevents
         ## 适用场景
         
         
-        1. 使用 诸葛IO 作为埋点收集工具的 。
+        1. 使用 诸葛IO/神策数据 作为埋点收集工具的 。
         2. 需要回归验证大批量埋点是否丢失的。
         3. 使用本工具 自动抓取解析埋点信息数据校验埋点是否 丢失。
         
@@ -66,7 +66,7 @@ Description: # garbevents
         - 启动服务
         1. 在cmd启动代理服务
         ```shell
-        mitmdump -p 8889 -s <you_test_script.py>
+        mitmdump -p 8889 -s test_script.py  
         ```
         
         - 连接代理
@@ -93,7 +93,8 @@ Description: # garbevents
         
         
         ```shell
-        mitmdump -p 8889 -s <you_test_script.py>
+        # 只打印所需日志
+        mitmdump -p 8889 -q -s test_script.py
         ```
         
         
@@ -139,6 +140,12 @@ Description: # garbevents
         
         ## 运行截图
         ![](images/demo.png)
+        
+        ## 用法拓展
+        
+        1. 结合UI自动化，嵌入到你的平台或者框架中，运行自动化脚本的同时，也测试了埋点。
+        2. 部署到公司服务器，给测试部门的同学用，助人为乐！！！
+        
         ## 
         
         以上便是 garbevents 的基本用法介绍。

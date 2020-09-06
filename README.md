@@ -58,7 +58,7 @@ pip install garbevents
 - 启动服务
 1. 在cmd启动代理服务
 ```shell
-mitmdump -p 8889 -s <you_test_script.py>
+mitmdump -p 8889 -s test_script.py  
 ```
 
 - 连接代理
@@ -85,7 +85,8 @@ mitm.it
 
 
 ```shell
-mitmdump -p 8889 -s <you_test_script.py>
+# 只打印所需日志
+mitmdump -p 8889 -q -s test_script.py
 ```
 
 
