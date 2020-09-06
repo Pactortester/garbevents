@@ -1,2 +1,2 @@
 mitmproxy==5.2
-garbevents==1.1.2
+garbevents==1.1.3
