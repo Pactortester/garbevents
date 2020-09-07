@@ -2,7 +2,7 @@ language: python
 python:   # 指定运行环境，这里会分别在 2.7 和 3.5 运行
   - '3.7'
 install:
-  - pip install -r requirements.txt   # 安装依赖
+#   - pip install -r requirements.txt   # 安装依赖
   - pip install flake8  # 安装代码扫描工具
 
 before_script:
