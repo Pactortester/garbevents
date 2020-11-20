@@ -35,7 +35,7 @@ class GetData:
         self.request_url = request_data.url
         if ST.url in self.request_url:
 
-            # ctx.log.info("url:-------->{}".format(self.request_url))
+            # ctx.log.info("url:-------->{}".format(self.request_url))f
             api = self.request_url.split('/')[3].replace("'", '')
             # ctx.log.error("拆分后获取API地址====>{}".format(api))
             if api in ST.interface_url:

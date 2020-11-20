@@ -17,8 +17,11 @@ class Settings(object):
     ST.all_events = ['event_name_1', 'event_name_2']
     # 接口地址
     ST.interface_url = ['apipool', 'APIPOOL']
+    # mock json 串
+    ST.mock_json = {}
     """
     report_path = 'report'  # 默认在当前路径生成report文件夹
     url = None
     all_events = []
     interface_url = []
+    mock_json = {}
