@@ -35,15 +35,11 @@ class GetData:
         self.request_url = request_data.url
         if ST.url in self.request_url:
 
-            # ctx.log.info("url:-------->{}".format(self.request_url))f
             api = self.request_url.split('/')[3].replace("'", '')
-            # ctx.log.error("拆分后获取API地址====>{}".format(api))
             if api in ST.interface_url:
                 request_content = str(flow.request.content).split("event=")[1].replace("'", '').replace(' ', '+')
-                # ctx.log.info("拆分后获取加密数据====>{}".format(request_content))
             else:
                 request_content = str(flow.request.url).split('&')[1].split('event=')[1]
-                # ctx.log.info("拆分后获取加密数据====>{}".format(request_content))
             if request_content.find('%') == 0:
                 result = urllib.parse.unquote(request_content)
             else:
@@ -51,25 +47,24 @@ class GetData:
                 ace = base64.b64decode(url_content)
                 result = zlib.decompress(ace).decode('utf-8')
             result_list = json.loads(result)
-            # ctx.log.error("解密数据后获取json串:")
             pprint(result_list)
             try:
                 event = result_list["data"][0]["pr"]["$eid"]
-                ctx.log.error("解密数据后获取事件名====>{}".format(event))
+                ctx.log.error("Get the event name after decrypting the data ====>{}".format(event))
                 self.events_list.append(event)
             except KeyError:
-                ctx.log.warn("暂无事件!")
+                ctx.log.warn("No events！")
             event_list = list(set(self.events_list))
 
             if not os.path.exists(ST.report_path):
                 os.mkdir(ST.report_path)
-                ctx.log.info(ST.report_path + ' 新建成功！')
+                ctx.log.info(ST.report_path + 'Successfully created！')
             file = open('{}/now_event.txt'.format(ST.report_path), 'w')
             for line in event_list:
                 file.write(line + '\n')
-            ctx.log.warn("事件名集合====>{}".format(event_list))
+            ctx.log.warn("Current event name collection ====>{}".format(event_list))
             lost_list = list(set(ST.all_events).difference(set(event_list)))
-            ctx.log.warn("丢失事件名====>{}".format(lost_list))
+            ctx.log.warn("Missing event name collection ====>{}".format(lost_list))
             file = open('{}/lost_event.txt'.format(ST.report_path), 'w')
             for line in lost_list:
                 file.write(line + '\n')
