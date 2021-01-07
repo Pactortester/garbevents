@@ -11,13 +11,13 @@ from mitmproxy import http
 from mitmproxy import ctx
 import base64
 import json
-from engine.settings import Settings as ST
+from garbevents.settings import Settings as ST
 
 
 class GetData:
     """
     Personal customized version of 爱问医生
-    A engine HTTP request class.
+    A garbevents HTTP request class.
     """
     events_list = []
 
