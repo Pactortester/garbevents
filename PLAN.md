@@ -1,3 +1,17 @@
+## 埋点适配计划
+
+- [x] 诸葛 IO
+- [x] 神策数据
+- [X] GrowingIO 埋点数据
+- [ ] 友盟
+- [ ] C4J
+- [ ] Mixpanel 
+- [ ] GA 
+- [ ] Ptmind Ptengine
+- [ ] 国双 WebDissector
+- [ ] 谷歌分析 Google Analytics
+
+
 ## 埋点数据上传API
 
 -  url

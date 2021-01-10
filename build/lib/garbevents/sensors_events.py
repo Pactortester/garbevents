@@ -62,7 +62,7 @@ class GetData:
 
         if ST.url in self.request_url:
 
-            ctx.log.info("url:-------->{}".format(self.request_url))
+            ctx.log.info("Get the complete URL after splitting ====>{}".format(self.request_url))
             api = self.request_url.split('/')[3]
             ctx.log.error("Get API address after splitting ====>{}".format(api))
 

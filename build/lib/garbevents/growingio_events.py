@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import base64
 import gzip
 import os
 import urllib
@@ -9,13 +10,13 @@ from pprint import pprint
 import mitmproxy
 from mitmproxy import http
 from mitmproxy import ctx
-import base64
 import json
 from garbevents.settings import Settings as ST
 
 
 class GetData:
     """
+    Personal customized version of GrowingIO
     A garbevents HTTP request class.
     """
     events_list = []
@@ -52,7 +53,7 @@ class GetData:
 
     def request(self, flow: mitmproxy.http.HTTPFlow):
         """
-
+        代理服务数据分析
         :param flow:
         :return:
         """
@@ -66,19 +67,19 @@ class GetData:
             api = self.request_url.split('/')[3]
             ctx.log.error("Get API address after splitting ====>{}".format(api))
 
-            request_content = str(flow.request.content).split('&')[2].split('=')[1]
+            request_content = flow.request.content.decode('utf8', errors='ignore')
             ctx.log.info("Get encrypted data after splitting ====>{}".format(request_content))
 
             gzip_data = urllib.parse.unquote(request_content)
-            data_list = json.loads(self.gzip_decompress(base64.b64decode(gzip_data)).decode('utf8'))
+            data_list = json.loads(gzip_data)
 
             for result_list in data_list:
                 ctx.log.error("Get JSON string after decrypting data ====>")
                 pprint(result_list)
 
                 try:
-                    event = result_list["event"]
-                    ctx.log.error("Get the event name after decrypting the data ====>{}".format(event))
+                    event = result_list["n"]
+                    ctx.log.error("Get the event name after decrypting the data ====> {}".format(event))
                     self.events_list.append(event)
                 except KeyError:
                     ctx.log.warn("No events！")
