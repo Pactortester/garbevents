@@ -11,7 +11,8 @@
 
 - [x] 诸葛 IO
 - [x] 神策数据
-- [X] GrowingIO 埋点数据
+- [x] GrowingIO 埋点数据
+- [ ] Argo 易观方舟
 - [ ] 友盟
 - [ ] C4J
 - [ ] Mixpanel 
