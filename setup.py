@@ -7,7 +7,7 @@ with open('README.md', encoding='utf-8') as f:
 
 setup(
     name="garbevents",
-    version="2.0.0",
+    version="2.0.1",
     keywords=["pip", "garbevents", "get_events", "buried points"],
     description="grabbing buried points",
     long_description=long_description,

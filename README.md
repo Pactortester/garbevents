@@ -12,7 +12,7 @@
 - [x] 诸葛 IO
 - [x] 神策数据
 - [x] GrowingIO 埋点数据
-- [ ] Argo 易观方舟
+- [x] Argo 易观方舟
 - [ ] 友盟
 - [ ] C4J
 - [ ] Mixpanel 
@@ -150,9 +150,26 @@ addons = [
 from garbevents.growingio_events import GetData
 from garbevents.settings import Settings as ST
 
-'mitmdump -p 8889 -s test_growingio_events.py'
 # 埋点上传url 
 ST.url = 'https://wxapi.growingio.com'
+# 报告生成路径 
+ST.report_path = 'report'
+# 所有事件名称 
+ST.all_events = ['event_name_1', 'event_name_2']
+addons = [
+    GetData()
+]
+
+```
+
+## Argo 易观方舟 Demo
+
+```python
+from garbevents.argo_events import GetData
+from garbevents.settings import Settings as ST
+
+# 埋点上传url 
+ST.url = 'https://uat.analysys.cn:4089/'
 # 报告生成路径 
 ST.report_path = 'report'
 # 所有事件名称 

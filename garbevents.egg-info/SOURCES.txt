@@ -1,6 +1,7 @@
 README.md
 setup.py
 garbevents/__init__.py
+garbevents/argo_events.py
 garbevents/custom_sensors_events.py
 garbevents/events.py
 garbevents/growingio_events.py
