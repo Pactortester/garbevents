@@ -6,6 +6,7 @@ import urllib
 import urllib.parse
 import urllib.error
 from pprint import pprint
+import emoji as emoji
 
 import mitmproxy
 from mitmproxy import http
@@ -70,7 +71,7 @@ class GetData:
             request_content = flow.request.content.decode('utf8', errors='ignore')
             ctx.log.info("Get encrypted data after splitting ====>{}".format(request_content))
 
-            gzip_data = urllib.parse.unquote(request_content)
+            gzip_data = emoji.demojize(urllib.parse.unquote(request_content))
             data_list = json.loads(gzip_data)
 
             for result_list in data_list:
