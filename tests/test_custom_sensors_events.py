@@ -4,9 +4,8 @@ from garbevents.custom_sensors_events import GetData
 
 from garbevents.settings import Settings as ST
 
-'mitmdump -p 8889 -q -s test_custom_sensors_events.py'
 
-# https://sensors.wenwo.com 爱问医生
+'mitmdump -p 8889 -s test_custom_sensors_events.py'
 ST.url = 'https://sensors.wenwo.com'
 ST.report_path = 'report'
 ST.all_events = ['$WebClick', '$pageview']

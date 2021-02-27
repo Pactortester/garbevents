@@ -1,1 +1,5 @@
-mitmproxy==5.3.0
+mitmproxy==5.2
+jsonpath==0.82
+garbevents==2.0.1
+setuptools==50.1.0
+paramiko==2.7.2
