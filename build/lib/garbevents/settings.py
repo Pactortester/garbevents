@@ -19,9 +19,14 @@ class Settings(object):
     ST.interface_url = ['apipool', 'APIPOOL']
     # mock json 串
     ST.mock_json = {}
+    # 事件配置文件
+    ST.events_properties = {
+            'graphic_switch': ['status_update', 'doc_set_num', 'doc_set_price', 'doc_set_sever_time']
+        }
     """
     report_path = 'report'  # 默认在当前路径生成report文件夹
     url = None
     all_events = []
     interface_url = []
     mock_json = {}
+    events_properties = {}

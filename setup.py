@@ -7,7 +7,7 @@ with open('README.md', encoding='utf-8') as f:
 
 setup(
     name="garbevents",
-    version="2.0.1",
+    version="2.0.2",
     keywords=["pip", "garbevents", "get_events", "buried points"],
     description="grabbing buried points",
     long_description=long_description,
@@ -40,5 +40,5 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     platforms="any",
-    install_requires=["mitmproxy", "jsonpath"]
+    install_requires=["mitmproxy", "jsonpath", "paramiko"]
 )
