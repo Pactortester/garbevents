@@ -1,4 +1,4 @@
 mitmproxy
 jsonpath
 paramiko
-emjio
+emoji
