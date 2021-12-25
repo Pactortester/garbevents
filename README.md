@@ -22,7 +22,8 @@
 - [ ] 谷歌分析 Google Analytics
 ## Logo
 
-![logo](https://github.com/Pactortester/garbevents/blob/master/images/garbevents.png)
+![logo](https://cdn.jsdelivr.net/gh/Pactortester/garbevents/images/garbevents.png)
+
 
 ## 安装
 
