@@ -1,4 +1,4 @@
 jsonpath~=0.82
 paramiko~=2.7.2
-mitmproxy~=5.3.0
+mitmproxy
 emoji~=1.1.0
