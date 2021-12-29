@@ -1,7 +1,7 @@
 # garbevents
 
 本项目由 [JetBranins](https://www.jetbrains.com/?from=garbevents) 赞助相关开发工具  
-<a href="https://www.jetbrains.com/?from=garbevents"><img src="https://github.com/Pactortester/garbevents/blob/master/images/jetbrains-variant-4.svg" width = "150" height = "150" div align=center /></a>
+<a href="https://www.jetbrains.com/?from=garbevents"><img src="https://files.mdnice.com/user/17535/b66e2763-ae98-4d2d-b239-4ab35c0a878c.svg" width = "150" height = "150" div align=center /></a>
 
 ##  
 
@@ -22,7 +22,7 @@
 - [ ] 谷歌分析 Google Analytics
 ## Logo
 
-![logo](https://github.com/Pactortester/garbevents/blob/master/images/garbevents.png)
+![](https://files.mdnice.com/user/17535/ed606252-d4db-42b0-9081-a81c438d1eab.png)
 
 ## 安装
 
@@ -55,7 +55,7 @@ pip install garbevents
 1. 在cmd启动代理服务
 
 ```shell
-mitmdump -p 8889 -s test_script.py  
+gb -p 8889 -s test_script.py  
 ```
 
 - 连接代理
@@ -86,7 +86,7 @@ mitm.it
 
 ```shell
 # 只打印所需日志
-mitmdump -p 8889 -q -s test_script.py
+gb -p 8889 -q -s test_script.py
 ```
 
 ## 诸葛IO Demo
@@ -182,7 +182,8 @@ addons = [
 
 ## 运行截图
 
-![](images/demo.png)
+![](https://files.mdnice.com/user/17535/c730acf2-ec15-4924-9cf5-b0b77c092211.png)
+
 
 ## 用法拓展
 

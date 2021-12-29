@@ -1,15 +1,16 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from setuptools import setup, find_packages
+from garbevents import __version__
 
 with open('README.md', encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
     name="garbevents",
-    version="2.0.4",
-    keywords=["pip", "garbevents", "get_events", "buried points"],
-    description="grabbing buried points",
+    version=__version__,
+    keywords=["pip", "garbevents", "zhugeio", "buried points", "sensors", "argo", "growingio"],
+    description="grabbing buried points tools.",
     long_description=long_description,
     long_description_content_type='text/markdown',
     license="MIT Licence",
@@ -36,6 +37,10 @@ setup(
         "Topic :: Software Development :: Testing",
         "Typing :: Typed",
     ],
+    entry_points="""
+    [console_scripts]
+    gb = garbevents.cli.main:main
+    """,
 
     packages=find_packages(),
     include_package_data=True,

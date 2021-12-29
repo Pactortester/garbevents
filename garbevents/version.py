@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-__version__ = "2.0.4"
-
 import os
 import sys
+from garbevents import __version__
 
 
 def get_garb_events_version():
