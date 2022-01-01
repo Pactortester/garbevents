@@ -17,6 +17,7 @@ from mitmproxy import options
 from mitmproxy import optmanager
 from mitmproxy import proxy
 from mitmproxy.utils import debug, arg_check
+from garbevents import __version__
 
 
 def assert_utf8_env():
@@ -151,6 +152,13 @@ def mitmproxy(args=None) -> typing.Optional[int]:  # pragma: no cover
 
 
 def mitmdump(args=None) -> typing.Optional[int]:  # pragma: no cover
+    logo = """                     __                         __      
+   ____ _____ ______/ /_  ___ _   _____  ____  / /______
+  / __ `/ __ `/ ___/ __ \/ _ \ | / / _ \/ __ \/ __/ ___/
+ / /_/ / /_/ / /  / /_/ /  __/ |/ /  __/ / / / /_(__  ) 
+ \__, /\__,_/_/  /_.___/\___/|___/\___/_/ /_/\__/____/  v{}
+/____/ """.format(__version__)
+    print(logo)
     from mitmproxy.tools import dump
 
     def extra(args):
