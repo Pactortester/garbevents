@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: garbevents
-Version: 2.0.6
+Version: 2.0.7
 Summary: grabbing buried points tools.
 Home-page: https://github.com/Pactortester/garbevents
 Author: lijiawei
@@ -35,7 +35,8 @@ License-File: LICENSE
 
 ##  
 
-[![Build Status](https://travis-ci.com/Pactortester/garbevents.svg?branch=master)](https://travis-ci.com/Pactortester/garbevents) ![PyPI](https://img.shields.io/pypi/v/garbevents) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/garbevents) ![GitHub top language](https://img.shields.io/github/languages/top/Pactortester/garbevents) ![PyPI - Downloads](https://img.shields.io/pypi/dm/garbevents) ![GitHub stars](https://img.shields.io/github/stars/Pactortester/garbevents?style=social) ![https://blog.csdn.net/flower_drop](https://img.shields.io/badge/csdn-%40flower__drop-orange)
+[![Build Status](https://travis-ci.com/Pactortester/garbevents.svg?branch=master)](https://travis-ci.com/Pactortester/garbevents) ![PyPI](https://img.shields.io/pypi/v/garbevents) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/garbevents) ![GitHub top language](https://img.shields.io/github/languages/top/Pactortester/garbevents) [![Downloads](https://static.pepy.tech/personalized-badge/garbevents?period=total&units=international_system&left_color=grey&right_color=brightgreen&left_text=downloads/total)](https://pepy.tech/project/garbevents) ![GitHub stars](https://img.shields.io/github/stars/Pactortester/garbevents?style=social) ![https://blog.csdn.net/flower_drop](https://img.shields.io/badge/csdn-%40flower__drop-orange)
+
 
 ## 埋点适配计划
 
@@ -85,7 +86,17 @@ pip install garbevents
 1. 在cmd启动代理服务
 
 ```shell
-gb -p 8889 -s test_script.py  
+gb -p 8889 -s test_script.py
+
+                     __                         __      
+   ____ _____ ______/ /_  ___ _   _____  ____  / /______
+  / __ `/ __ `/ ___/ __ \/ _ \ | / / _ \/ __ \/ __/ ___/
+ / /_/ / /_/ / /  / /_/ /  __/ |/ /  __/ / / / /_(__  ) 
+ \__, /\__,_/_/  /_.___/\___/|___/\___/_/ /_/\__/____/  v2.0.5
+/____/ 
+
+Proxy server listening at http://*:8889
+
 ```
 
 - 连接代理

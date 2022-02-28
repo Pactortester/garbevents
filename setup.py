@@ -39,11 +39,11 @@ setup(
     ],
     entry_points="""
     [console_scripts]
-    gb = garbevents.cli.main:main
+    gb = garbevents.cli.main:mitmdump
     """,
 
     packages=find_packages(),
     include_package_data=True,
     platforms="any",
-    install_requires=["mitmproxy", "jsonpath", "paramiko", "emoji"]
+    install_requires=["mitmproxy==5.3.0", "jsonpath", "paramiko", "emoji"]
 )

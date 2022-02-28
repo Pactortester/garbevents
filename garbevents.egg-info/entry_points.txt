@@ -1,4 +1,4 @@
 
     [console_scripts]
-    gb = garbevents.cli.main:main
+    gb = garbevents.cli.main:mitmdump
     
