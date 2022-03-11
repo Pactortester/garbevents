@@ -1,23 +1,15 @@
-# -*- coding: utf-8 -*-
-"""
-This file contains python3.6+ syntax!
-Feel free to import and use whatever new package you deem necessary.
-"""
-
-import os
-import sys
-import asyncio
 import argparse
+import asyncio
+import os
 import signal
+import sys
 import typing
-
-from mitmproxy.tools import cmdline
+from garbevents import __version__
 from mitmproxy import exceptions, master
 from mitmproxy import options
 from mitmproxy import optmanager
-from mitmproxy import proxy
+from mitmproxy.tools import cmdline
 from mitmproxy.utils import debug, arg_check
-from garbevents import __version__
 
 
 def assert_utf8_env():
@@ -55,8 +47,6 @@ def process_options(parser, opts, args):
             adict[n] = getattr(args, n)
     opts.merge(adict)
 
-    return proxy.config.ProxyConfig(opts)
-
 
 def run(
         master_cls: typing.Type[master.Master],
@@ -92,26 +82,16 @@ def run(
             os.path.join(opts.confdir, "config.yaml"),
             os.path.join(opts.confdir, "config.yml"),
         )
-        pconf = process_options(parser, opts, args)
-        server: typing.Any = None
-        if pconf.options.server:
-            try:
-                server = proxy.server.ProxyServer(pconf)
-            except exceptions.ServerException as v:
-                print(str(v), file=sys.stderr)
-                sys.exit(1)
-        else:
-            server = proxy.server.DummyServer(pconf)
+        process_options(parser, opts, args)
 
-        master.server = server
         if args.options:
-            print(optmanager.dump_defaults(opts))
+            optmanager.dump_defaults(opts, sys.stdout)
             sys.exit(0)
         if args.commands:
             master.commands.dump()
             sys.exit(0)
         if extra:
-            if(args.filter_args):
+            if args.filter_args:
                 master.log.info(f"Only processing flows that match \"{' & '.join(args.filter_args)}\"")
             opts.update(**extra(args))
 
@@ -133,7 +113,7 @@ def run(
 
         master.run()
     except exceptions.OptionsError as e:
-        print("%s: %s" % (sys.argv[0], e), file=sys.stderr)
+        print("{}: {}".format(sys.argv[0], e), file=sys.stderr)
         sys.exit(1)
     except (KeyboardInterrupt, RuntimeError):
         pass
@@ -142,10 +122,10 @@ def run(
 
 def mitmproxy(args=None) -> typing.Optional[int]:  # pragma: no cover
     if os.name == "nt":
-        print("Error: mitmproxy's console interface is not supported on Windows. "
-              "You can run mitmdump or mitmweb instead.", file=sys.stderr)
-        return 1
-    assert_utf8_env()
+        import urwid
+        urwid.set_encoding("utf8")
+    else:
+        assert_utf8_env()
     from mitmproxy.tools import console
     run(console.master.ConsoleMaster, cmdline.mitmproxy, args)
     return None
