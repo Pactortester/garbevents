@@ -26,9 +26,9 @@ setup(
         "Operating System :: POSIX",
         "Operating System :: Microsoft :: Windows",
         "Programming Language :: Python :: 3 :: Only",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: Implementation :: CPython",
         "Topic :: Security",
         "Topic :: Internet :: WWW/HTTP",
@@ -36,7 +36,7 @@ setup(
         "Topic :: System :: Networking :: Monitoring",
         "Topic :: Software Development :: Testing",
         "Typing :: Typed",
-    ],
+    ]
     entry_points="""
     [console_scripts]
     gb = garbevents.cli.main:mitmdump
@@ -45,5 +45,5 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     platforms="any",
-    install_requires=["mitmproxy==7.0.3", "jsonpath", "paramiko", "emoji"]
+    install_requires=["mitmproxy", "jsonpath", "paramiko", "emoji"]
 )
