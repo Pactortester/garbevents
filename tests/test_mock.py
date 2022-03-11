@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from garbevents.events import GetData
+from garbevents.mock_events import GetData
 
 from garbevents.settings import Settings as ST
 
