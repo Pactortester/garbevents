@@ -36,7 +36,7 @@ setup(
         "Topic :: System :: Networking :: Monitoring",
         "Topic :: Software Development :: Testing",
         "Typing :: Typed",
-    ]
+    ],
     entry_points="""
     [console_scripts]
     gb = garbevents.cli.main:mitmdump

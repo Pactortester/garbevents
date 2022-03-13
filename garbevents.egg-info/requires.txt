@@ -1,4 +1,0 @@
-mitmproxy
-jsonpath
-paramiko
-emoji
