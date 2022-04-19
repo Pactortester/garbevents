@@ -206,6 +206,9 @@ addons = [
 
 [![Stargazers over time](https://starchart.cc/Pactortester/garbevents.svg)](https://starchart.cc/Pactortester/garbevents)
 
+## 感谢
+
+本工具中的代理功能使用[mitmproxy](https://github.com/mitmproxy/mitmproxy)实现。
 ##  
 
 以上便是 garbevents 的基本用法介绍。
