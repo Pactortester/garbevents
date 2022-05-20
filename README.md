@@ -208,7 +208,14 @@ addons = [
 
 ## 感谢
 
-本工具中的代理功能使用[mitmproxy](https://github.com/mitmproxy/mitmproxy)实现。
+本工具中的代理功能使用 [mitmproxy](https://github.com/mitmproxy/mitmproxy) 实现。
+
+## Contributors
+
+<a href="https://github.com/Pactortester/garbevents/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Pactortester/garbevents" />
+</a>
+
 ##  
 
 以上便是 garbevents 的基本用法介绍。
