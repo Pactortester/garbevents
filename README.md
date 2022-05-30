@@ -27,7 +27,9 @@
 
 ## 安装
 
-pip install garbevents
+```shell
+pip install -U garbevents
+```
 
 ## 仓库地址：
 
