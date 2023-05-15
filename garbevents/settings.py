@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """
 Parameter initialization is a global variable by default. When calling the relevant API,
 you need to inherit the setting class and set the corresponding parameters.
@@ -7,7 +5,7 @@ you need to inherit the setting class and set the corresponding parameters.
 """
 
 
-class Settings(object):
+class Settings:
     """
     # 埋点上传url
     ST.url = 'https://www.baidu.com/'
@@ -24,7 +22,8 @@ class Settings(object):
             'graphic_switch': ['status_update', 'doc_set_num', 'doc_set_price', 'doc_set_sever_time']
         }
     """
-    report_path = 'report'  # 默认在当前路径生成report文件夹
+
+    report_path = "report"  # 默认在当前路径生成report文件夹
     url = None
     all_events = []
     interface_url = []

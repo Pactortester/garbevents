@@ -4,12 +4,16 @@ import os
 import signal
 import sys
 import typing
-from garbevents import __version__
-from mitmproxy import exceptions, master
+
+from mitmproxy import exceptions
+from mitmproxy import master
 from mitmproxy import options
 from mitmproxy import optmanager
 from mitmproxy.tools import cmdline
-from mitmproxy.utils import debug, arg_check
+from mitmproxy.utils import arg_check
+from mitmproxy.utils import debug
+
+from garbevents import __version__
 
 
 def assert_utf8_env():
@@ -17,13 +21,10 @@ def assert_utf8_env():
     for i in ["LANG", "LC_CTYPE", "LC_ALL"]:
         spec += os.environ.get(i, "").lower()
     if "utf" not in spec:
-        print(
-            "Error: mitmproxy requires a UTF console environment.",
-            file=sys.stderr
-        )
+        print("Error: mitmproxy requires a UTF console environment.", file=sys.stderr)
         print(
             "Set your LANG environment variable to something like en_US.UTF-8",
-            file=sys.stderr
+            file=sys.stderr,
         )
         sys.exit(1)
 
@@ -35,10 +36,10 @@ def process_options(parser, opts, args):
     if args.quiet or args.options or args.commands:
         # also reduce log verbosity if --options or --commands is passed,
         # we don't want log messages from regular startup then.
-        args.termlog_verbosity = 'error'
+        args.termlog_verbosity = "error"
         args.flow_detail = 0
     if args.verbose:
-        args.termlog_verbosity = 'debug'
+        args.termlog_verbosity = "debug"
         args.flow_detail = 2
 
     adict = {}
@@ -49,14 +50,14 @@ def process_options(parser, opts, args):
 
 
 def run(
-        master_cls: typing.Type[master.Master],
-        make_parser: typing.Callable[[options.Options], argparse.ArgumentParser],
-        arguments: typing.Sequence[str],
-        extra: typing.Callable[[typing.Any], dict] = None
+    master_cls: type[master.Master],
+    make_parser: typing.Callable[[options.Options], argparse.ArgumentParser],
+    arguments: typing.Sequence[str],
+    extra: typing.Callable[[typing.Any], dict] = None,
 ) -> master.Master:  # pragma: no cover
     """
-        extra: Extra argument processing callable which returns a dict of
-        options.
+    extra: Extra argument processing callable which returns a dict of
+    options.
     """
     debug.register_info_dumpers()
 
@@ -92,12 +93,16 @@ def run(
             sys.exit(0)
         if extra:
             if args.filter_args:
-                master.log.info(f"Only processing flows that match \"{' & '.join(args.filter_args)}\"")
+                master.log.info(
+                    f"Only processing flows that match \"{' & '.join(args.filter_args)}\""
+                )
             opts.update(**extra(args))
 
         loop = asyncio.get_event_loop()
         try:
-            loop.add_signal_handler(signal.SIGINT, getattr(master, "prompt_for_exit", master.shutdown))
+            loop.add_signal_handler(
+                signal.SIGINT, getattr(master, "prompt_for_exit", master.shutdown)
+            )
             loop.add_signal_handler(signal.SIGTERM, master.shutdown)
         except NotImplementedError:
             # Not supported on Windows
@@ -106,14 +111,16 @@ def run(
         # Make sure that we catch KeyboardInterrupts on Windows.
         # https://stackoverflow.com/a/36925722/934719
         if os.name == "nt":
+
             async def wakeup():
                 while True:
                     await asyncio.sleep(0.2)
+
             asyncio.ensure_future(wakeup())
 
         master.run()
     except exceptions.OptionsError as e:
-        print("{}: {}".format(sys.argv[0], e), file=sys.stderr)
+        print(f"{sys.argv[0]}: {e}", file=sys.stderr)
         sys.exit(1)
     except (KeyboardInterrupt, RuntimeError):
         pass
@@ -123,21 +130,25 @@ def run(
 def mitmproxy(args=None) -> typing.Optional[int]:  # pragma: no cover
     if os.name == "nt":
         import urwid
+
         urwid.set_encoding("utf8")
     else:
         assert_utf8_env()
     from mitmproxy.tools import console
+
     run(console.master.ConsoleMaster, cmdline.mitmproxy, args)
     return None
 
 
 def mitmdump(args=None) -> typing.Optional[int]:  # pragma: no cover
-    logo = """                     __                         __      
+    logo = r"""                     __                         __      
    ____ _____ ______/ /_  ___ _   _____  ____  / /______
   / __ `/ __ `/ ___/ __ \/ _ \ | / / _ \/ __ \/ __/ ___/
  / /_/ / /_/ / /  / /_/ /  __/ |/ /  __/ / / / /_(__  ) 
  \__, /\__,_/_/  /_.___/\___/|___/\___/_/ /_/\__/____/  v{}
-/____/ """.format(__version__)
+/____/ """.format(
+        __version__
+    )
     print(logo)
     from mitmproxy.tools import dump
 
@@ -159,5 +170,6 @@ def mitmdump(args=None) -> typing.Optional[int]:  # pragma: no cover
 
 def mitmweb(args=None) -> typing.Optional[int]:  # pragma: no cover
     from mitmproxy.tools import web
+
     run(web.master.WebMaster, cmdline.mitmweb, args)
     return None

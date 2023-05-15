@@ -1,20 +1,28 @@
 #!/usr/bin/env python
-# -*- coding:utf-8 -*-
-from setuptools import setup, find_packages
+from setuptools import find_packages
+from setuptools import setup
+
 from garbevents import __version__
 
-with open('README.md', encoding='utf-8') as f:
+with open("README.md", encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
     name="garbevents",
     version=__version__,
-    keywords=["pip", "garbevents", "zhugeio", "buried points", "sensors", "argo", "growingio"],
+    keywords=[
+        "pip",
+        "garbevents",
+        "zhugeio",
+        "buried points",
+        "sensors",
+        "argo",
+        "growingio",
+    ],
     description="grabbing buried points tools.",
     long_description=long_description,
-    long_description_content_type='text/markdown',
+    long_description_content_type="text/markdown",
     license="MIT Licence",
-
     url="https://github.com/Pactortester/garbevents",
     author="lijiawei",
     author_email="1456470136@qq.com",
@@ -41,9 +49,8 @@ setup(
     [console_scripts]
     gb = garbevents.cli.main:mitmdump
     """,
-
     packages=find_packages(),
     include_package_data=True,
     platforms="any",
-    install_requires=["mitmproxy==8.0.0", "jsonpath", "paramiko", "emoji"]
+    install_requires=["mitmproxy==8.0.0", "jsonpath", "paramiko", "emoji"],
 )

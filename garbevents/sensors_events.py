@@ -1,16 +1,14 @@
-# -*- coding: utf-8 -*-
+import base64
 import gzip
+import json
 import os
-import urllib
-import urllib.parse
 import urllib.error
+import urllib.parse
 from pprint import pprint
 
 import mitmproxy
-from mitmproxy import http
 from mitmproxy import ctx
-import base64
-import json
+
 from garbevents.settings import Settings as ST
 
 
@@ -18,6 +16,7 @@ class GetData:
     """
     A garbevents HTTP request class.
     """
+
     events_list = []
 
     @staticmethod
@@ -28,7 +27,7 @@ class GetData:
         :param n:
         :return:
         """
-        return [arr[i:i + n] for i in range(0, len(arr), n)]
+        return [arr[i : i + n] for i in range(0, len(arr), n)]
 
     @staticmethod
     def gzip_decompress(data):
@@ -61,16 +60,19 @@ class GetData:
         self.request_url = request_data.url
 
         if ST.url in self.request_url:
+            ctx.log.info(
+                f"Get the complete URL after splitting ====>{self.request_url}"
+            )
+            api = self.request_url.split("/")[3]
+            ctx.log.error(f"Get API address after splitting ====>{api}")
 
-            ctx.log.info("Get the complete URL after splitting ====>{}".format(self.request_url))
-            api = self.request_url.split('/')[3]
-            ctx.log.error("Get API address after splitting ====>{}".format(api))
-
-            request_content = str(flow.request.content).split('&')[2].split('=')[1]
-            ctx.log.info("Get encrypted data after splitting ====>{}".format(request_content))
+            request_content = str(flow.request.content).split("&")[2].split("=")[1]
+            ctx.log.info(f"Get encrypted data after splitting ====>{request_content}")
 
             gzip_data = urllib.parse.unquote(request_content)
-            data_list = json.loads(self.gzip_decompress(base64.b64decode(gzip_data)).decode('utf8'))
+            data_list = json.loads(
+                self.gzip_decompress(base64.b64decode(gzip_data)).decode("utf8")
+            )
 
             for result_list in data_list:
                 ctx.log.error("Get JSON string after decrypting data ====>")
@@ -78,7 +80,9 @@ class GetData:
 
                 try:
                     event = result_list["event"]
-                    ctx.log.error("Get the event name after decrypting the data ====>{}".format(event))
+                    ctx.log.error(
+                        f"Get the event name after decrypting the data ====>{event}"
+                    )
                     self.events_list.append(event)
                 except KeyError:
                     ctx.log.warn("No events！")
@@ -86,14 +90,14 @@ class GetData:
 
                 if not os.path.exists(ST.report_path):
                     os.mkdir(ST.report_path)
-                    ctx.log.info(ST.report_path + 'Successfully created！')
+                    ctx.log.info(ST.report_path + "Successfully created！")
 
-                file = open('{}/now_event.txt'.format(ST.report_path), 'w')
+                file = open(f"{ST.report_path}/now_event.txt", "w")
                 for line in event_list:
-                    file.write(line + '\n')
-                ctx.log.warn("Current event name collection ====>{}".format(event_list))
+                    file.write(line + "\n")
+                ctx.log.warn(f"Current event name collection ====>{event_list}")
                 lost_list = list(set(ST.all_events).difference(set(event_list)))
-                ctx.log.warn("Missing event name collection ====>{}".format(lost_list))
-                file = open('{}/lost_event.txt'.format(ST.report_path), 'w')
+                ctx.log.warn(f"Missing event name collection ====>{lost_list}")
+                file = open(f"{ST.report_path}/lost_event.txt", "w")
                 for line in lost_list:
-                    file.write(line + '\n')
+                    file.write(line + "\n")
