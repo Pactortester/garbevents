@@ -52,5 +52,5 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     platforms="any",
-    install_requires=["mitmproxy==8.0.0", "jsonpath", "paramiko", "emoji"],
+    install_requires=["mitmproxy==11.1.2", "jsonpath", "paramiko", "emoji"],
 )
